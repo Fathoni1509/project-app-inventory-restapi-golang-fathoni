@@ -1,8 +1,9 @@
 package model
 
 type Shelve struct {
-	Model
 	ShelveId    int    `json:"shelve_id"`
 	WarehouseId int    `json:"warehouse_id"`
+	Warehouse   string `json:"warehouse"`
 	Name        string `json:"name"`
+	Model
 }

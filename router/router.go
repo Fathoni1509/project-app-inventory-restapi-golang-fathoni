@@ -84,6 +84,15 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Delete("/", handler.WarehouseHandler.DeleteWarehouse)
 		})
 	})
+	r.Route("/shelve", func(r chi.Router) {
+		r.Get("/", handler.ShelveHandler.GetListShelves)
+		r.Post("/", handler.ShelveHandler.AddShelve)
+		r.Route("/{shelve_id}", func(r chi.Router) {
+			r.Get("/", handler.ShelveHandler.GetListShelveByID)
+			r.Put("/", handler.ShelveHandler.UpdateShelve)
+			r.Delete("/", handler.ShelveHandler.DeleteShelve)
+		})
+	})
 
 	return r
 }

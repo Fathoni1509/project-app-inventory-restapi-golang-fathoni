@@ -9,11 +9,13 @@ import (
 type Repository struct {
 	CategoryRepo CategoryRepository
 	WarehouseRepo WarehouseRepository
+	ShelveRepo ShelveRepository
 }
 
 func NewRepository(db database.PgxIface, log *zap.Logger) Repository {
 	return Repository{
 		CategoryRepo: NewCategoryRepository(db),
 		WarehouseRepo: NewWarehouseRepository(db),
+		ShelveRepo: NewShelveRepository(db),
 	}
 }
