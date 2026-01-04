@@ -1,0 +1,39 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"project-app-inventory-restapi-golang-fathoni/database"
+	"project-app-inventory-restapi-golang-fathoni/handler"
+	"project-app-inventory-restapi-golang-fathoni/repository"
+	"project-app-inventory-restapi-golang-fathoni/router"
+	"project-app-inventory-restapi-golang-fathoni/service"
+	"project-app-inventory-restapi-golang-fathoni/utils"
+)
+
+func main() {
+	config, err := utils.ReadConfiguration()
+	if err != nil {
+		log.Fatal("error file configration")
+	}
+	fmt.Println(config)
+	db, err := database.InitDB(config.DB)
+	if err != nil {
+		panic(err)
+	}
+
+	logger, err := utils.InitLogger(config.PathLogging, config.Debug)
+
+	repo := repository.NewRepository(db, logger)
+	service := service.NewService(repo)
+	handler := handler.NewHandler(service, config)
+
+	r := router.NewRouter(handler, service, logger)
+
+	fmt.Println("server running on host " + config.DB.Host)
+	fmt.Println("server running on port " + config.Port)
+	if err := http.ListenAndServe(":"+config.Port, r); err != nil {
+		log.Fatal("error server")
+	}
+}
