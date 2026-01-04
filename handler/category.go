@@ -26,7 +26,7 @@ func NewCategoryHandler(categoryService service.CategoryService, config utils.Co
 
 // create category
 func (categoryHandler *CategoryHandler) AddCategory(w http.ResponseWriter, r *http.Request) {
-	var req dto.CategoryRequest
+	var req dto.CategoryCreateRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		utils.ResponseBadRequest(w, http.StatusBadRequest, "error data", nil)
 		return
@@ -63,7 +63,7 @@ func (categoryHandler *CategoryHandler) GetListCategories(w http.ResponseWriter,
 	// 	return
 	// }
 
-	// Get data assignment form service all assignment
+	// Get data categori form service all category
 	categories, err := categoryHandler.CategoryService.GetListCategories()
 	if err != nil {
 		utils.ResponseBadRequest(w, http.StatusInternalServerError, "Failed to fetch categories: "+err.Error(), nil)
@@ -103,10 +103,24 @@ func (categoryHandler *CategoryHandler) UpdateCategory(w http.ResponseWriter, r 
 		return
 	}
 
-	var req dto.CategoryRequest
+	var req dto.CategoryUpdateRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		utils.ResponseBadRequest(w, http.StatusBadRequest, "error data :"+err.Error(), nil)
 		return
+	}
+
+	existing, err := categoryHandler.CategoryService.GetListCategoryById(categoryID)
+	if err != nil {
+		utils.ResponseBadRequest(w, http.StatusNotFound, "Data not found:"+err.Error(), nil)
+		return
+	}
+
+	if req.Name != nil {
+		existing.Name = *req.Name
+	}
+
+	if req.Description != nil {
+		existing.Description = *req.Description
 	}
 
 	// validation
@@ -118,8 +132,8 @@ func (categoryHandler *CategoryHandler) UpdateCategory(w http.ResponseWriter, r 
 
 	// parsing to model category
 	category := model.Category{
-		Name: req.Name,
-		Description: req.Description,
+		Name: existing.Name,
+		Description: existing.Description,
 	}
 
 	err = categoryHandler.CategoryService.UpdateCategory(categoryID, &category)

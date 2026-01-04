@@ -86,7 +86,7 @@ func (repo *categoryRepository) AddCategory(category *model.Category) error {
 func (repo *categoryRepository) UpdateCategory(category_id int, category *model.Category) error {
 	query := `UPDATE categories
 		SET name=$1, description=$2, updated_at=NOW()
-		WHERE category_id=$3`
+		WHERE deleted_at IS NULL AND category_id=$3`
 
 	commandTag, err := repo.db.Exec(context.Background(), query,
 		category.Name,
