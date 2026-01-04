@@ -5,11 +5,10 @@ import (
 	"project-app-inventory-restapi-golang-fathoni/handler"
 	"project-app-inventory-restapi-golang-fathoni/service"
 
-	
-	// mCostume "session-22/middleware"
-	
+	mCostume "project-app-inventory-restapi-golang-fathoni/middleware"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	// "github.com/go-chi/chi/v5/middleware"
 	"go.uber.org/zap"
 )
@@ -18,10 +17,11 @@ func NewRouter(handler handler.Handler, service service.Service, log *zap.Logger
 	r := chi.NewRouter()
 
 	// middleware
-	// mw := mCostume.NewMiddlewareCustome(service, log)
+	mw := mCostume.NewMiddlewareCustome(service, log)
 
 	// r.Mount("/api/v1", Apiv1(handler, mw))
-	r.Mount("/api/v2", Apiv2(handler))
+	// r.Mount("/api/v2", Apiv2(handler))
+	r.Mount("/api/v2", Apiv2(handler, mw))
 
 	// //menu
 	// r.Route("/user", func(r chi.Router) {
@@ -62,8 +62,10 @@ func Apiv1(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 	return r
 }*/
 
-func Apiv2(handler handler.Handler) *chi.Mux {
+func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+	r.Use(mw.Logging)
 	r.Route("/category", func(r chi.Router) {
 		r.Get("/", handler.CategoryHandler.GetListCategories)
 		r.Post("/", handler.CategoryHandler.AddCategory)

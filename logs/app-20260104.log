@@ -1,0 +1,2 @@
+2026-01-04T15:33:11.545+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/category/2", "Duration": "67.8585ms"}
+2026-01-04T15:33:48.674+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/category/4", "Duration": "1.0814ms"}

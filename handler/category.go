@@ -52,7 +52,7 @@ func (categoryHandler *CategoryHandler) AddCategory(w http.ResponseWriter, r *ht
 		return
 	}
 
-	utils.ResponseSuccess(w, http.StatusOK, "success created assignment", nil)
+	utils.ResponseSuccess(w, http.StatusOK, "success created category", nil)
 }
 
 // get list categories
