@@ -80,11 +80,13 @@ func (categoryHandler *CategoryHandler) GetListCategoryByID(w http.ResponseWrite
 
 	categoryID, err := strconv.Atoi(categoryIDstr)
 	if err != nil {
+		utils.ResponseBadRequest(w, http.StatusBadRequest, "Invalid category ID", nil)
 		return
 	}
 
 	response, err := categoryHandler.CategoryService.GetListCategoryById(categoryID)
 	if err != nil {
+		utils.ResponseBadRequest(w, http.StatusNotFound, "Category not found: "+err.Error(), nil)
 		return
 	}
 
@@ -135,12 +137,13 @@ func (categoryHandler *CategoryHandler) DeleteCategory(w http.ResponseWriter, r 
 
 	categoryID, err := strconv.Atoi(categoryIDstr)
 	if err != nil {
+		utils.ResponseBadRequest(w, http.StatusBadRequest, "Invalid category ID", nil)
 		return
 	}
 
 	err = categoryHandler.CategoryService.DeleteCategory(categoryID)
 	if err != nil {
-		utils.ResponseBadRequest(w, http.StatusBadRequest, "Error delete :"+err.Error(), nil)
+		utils.ResponseBadRequest(w, http.StatusNotFound, "Error delete :"+err.Error(), nil)
 		return
 	}
 

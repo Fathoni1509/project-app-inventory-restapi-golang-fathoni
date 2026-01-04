@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"errors"
 	"project-app-inventory-restapi-golang-fathoni/database"
 	"project-app-inventory-restapi-golang-fathoni/model"
 )
@@ -24,7 +25,7 @@ func NewCategoryRepository(db database.PgxIface) CategoryRepository {
 
 // get list categories
 func (repo *categoryRepository) GetListCategories() ([]model.Category, error) {
-	query := `SELECT category_id, name, description, created_at, updated_at, deleted_at FROM categories ORDER BY category_id`
+	query := `SELECT category_id, name, description, created_at, updated_at, deleted_at FROM categories WHERE deleted_at IS NULL ORDER BY category_id`
 
 	rows, err := repo.db.Query(context.Background(), query)
 
@@ -49,9 +50,9 @@ func (repo *categoryRepository) GetListCategories() ([]model.Category, error) {
 
 // get list category by ID
 func (repo *categoryRepository) GetListCategoryById(category_id int) (model.Category, error) {
-	query := `SELECT category_id, name_category, description, created_at, updated_at, deleted_at 
+	query := `SELECT category_id, name, description, created_at, updated_at, deleted_at 
 		FROM categories
-		WHERE category_id=$1`
+		WHERE deleted_at IS NULL AND category_id=$1`
 
 	var category model.Category
 
@@ -66,7 +67,7 @@ func (repo *categoryRepository) GetListCategoryById(category_id int) (model.Cate
 
 // add category
 func (repo *categoryRepository) AddCategory(category *model.Category) error {
-	query := `INSERT INTO categories (name_category, description, created_at, updated_at) VALUES
+	query := `INSERT INTO categories (name, description, created_at, updated_at) VALUES
 	($1, $2, NOW(), NOW()) RETURNING category_id`
 
 	_, err := repo.db.Exec(context.Background(), query,
@@ -84,18 +85,21 @@ func (repo *categoryRepository) AddCategory(category *model.Category) error {
 // update category by ID
 func (repo *categoryRepository) UpdateCategory(category_id int, category *model.Category) error {
 	query := `UPDATE categories
-		SET name_category=$1, description=$2, updated_at=NOW()
+		SET name=$1, description=$2, updated_at=NOW()
 		WHERE category_id=$3`
 
-	_, err := repo.db.Exec(context.Background(), query,
+	commandTag, err := repo.db.Exec(context.Background(), query,
 		category.Name,
 		category.Description,
-		category.UpdatedAt,
 		category_id,
 	)
 
 	if err != nil {
 		return err
+	}
+
+	if commandTag.RowsAffected() == 0 {
+		return errors.New("category not found")
 	}
 
 	return nil
@@ -107,13 +111,17 @@ func (repo *categoryRepository) DeleteCategory(category_id int) error {
 		SET deleted_at=NOW()
 		WHERE category_id=$1 AND deleted_at IS NULL`
 
-	_, err := repo.db.Exec(context.Background(), query,
+	commandTag, err := repo.db.Exec(context.Background(), query,
 		category_id,
 	)
 
 	if err != nil {
 		return err
 	}
+
+	if commandTag.RowsAffected() == 0 {
+        return errors.New("category not found")
+    }
 
 	return nil
 }
