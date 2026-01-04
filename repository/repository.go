@@ -10,6 +10,7 @@ type Repository struct {
 	CategoryRepo CategoryRepository
 	WarehouseRepo WarehouseRepository
 	ShelveRepo ShelveRepository
+	UserRepo UserRepository
 }
 
 func NewRepository(db database.PgxIface, log *zap.Logger) Repository {
@@ -17,5 +18,6 @@ func NewRepository(db database.PgxIface, log *zap.Logger) Repository {
 		CategoryRepo: NewCategoryRepository(db),
 		WarehouseRepo: NewWarehouseRepository(db),
 		ShelveRepo: NewShelveRepository(db),
+		UserRepo: NewUserRepository(db),
 	}
 }
