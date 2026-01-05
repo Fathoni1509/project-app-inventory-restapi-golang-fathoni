@@ -8,4 +8,5 @@ type Inventory struct {
 	ShelveId    int       `json:"shelve_id"`
 	LastUpdated time.Time `json:"last_updated"`
 	Quantity    int       `json:"quantity"`
+	DeletedAt *time.Time `json:"deleted_at"`
 }

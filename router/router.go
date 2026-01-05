@@ -111,6 +111,15 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Delete("/", handler.ProductHandler.DeleteProduct)
 		})
 	})
+	r.Route("/inventory", func(r chi.Router) {
+		r.Get("/", handler.InventoryHandler.GetListInventorys)
+		r.Post("/", handler.InventoryHandler.AddInventory)
+		r.Route("/{inventory_id}", func(r chi.Router) {
+			r.Get("/", handler.InventoryHandler.GetListInventoryByID)
+			r.Put("/", handler.InventoryHandler.UpdateInventory)
+			r.Delete("/", handler.InventoryHandler.DeleteInventory)
+		})
+	})
 
 	return r
 }

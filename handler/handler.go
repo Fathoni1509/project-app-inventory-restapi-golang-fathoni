@@ -13,6 +13,7 @@ type Handler struct {
 	ShelveHandler ShelveHandler
 	UserHandler UserHandler
 	ProductHandler ProductHandler
+	InventoryHandler InventoryHandler
 }
 
 func NewHandler(service service.Service, config utils.Configuration) Handler {
@@ -24,5 +25,6 @@ func NewHandler(service service.Service, config utils.Configuration) Handler {
 		ShelveHandler: NewShelveHandler(service.ShelveService, config),
 		UserHandler: NewUserHandler(service.UserService, config),
 		ProductHandler: NewProductHandler(service.ProductService, config),
+		InventoryHandler: NewInventoryHandler(service.InventoryService, config),
 	}
 }
