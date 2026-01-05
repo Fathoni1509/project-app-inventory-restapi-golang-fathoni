@@ -67,3 +67,10 @@
 2026-01-04T22:26:56.994+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "DELETE", "URL": "/api/v2/user/8", "Duration": "10.3112ms"}
 2026-01-04T22:27:01.686+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "DELETE", "URL": "/api/v2/user/6", "Duration": "4.108ms"}
 2026-01-04T22:27:17.897+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/user", "Duration": "1.8718ms"}
+2026-01-04T23:45:14.709+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "0s"}
+2026-01-04T23:46:23.378+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "1.2749ms"}
+2026-01-04T23:46:55.445+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "70.0261ms"}
+2026-01-04T23:50:35.082+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "5.4309ms"}
+2026-01-04T23:51:06.662+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "14.2447ms"}
+2026-01-04T23:53:13.134+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "21.2232ms"}
+2026-01-04T23:53:28.464+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product", "Duration": "3.5952ms"}

@@ -1,0 +1,18 @@
+2026-01-05T00:02:23.757+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product", "Duration": "9.8443ms"}
+2026-01-05T00:03:00.846+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product/1", "Duration": "4.0285ms"}
+2026-01-05T00:03:37.142+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/product/2", "Duration": "123.3278ms"}
+2026-01-05T00:04:21.561+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/product/2", "Duration": "10.0565ms"}
+2026-01-05T00:05:11.052+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "DELETE", "URL": "/api/v2/product/2", "Duration": "4.5657ms"}
+2026-01-05T00:10:32.896+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/product/2", "Duration": "13.134ms"}
+2026-01-05T00:10:47.218+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/product/2", "Duration": "1.517ms"}
+2026-01-05T00:11:07.356+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/product/1", "Duration": "4.0089ms"}
+2026-01-05T00:11:17.265+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/product/1", "Duration": "10.0482ms"}
+2026-01-05T00:11:30.753+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "57.7809ms"}
+2026-01-05T00:11:43.263+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "9.9982ms"}
+2026-01-05T00:47:49.765+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product", "Duration": "0s"}
+2026-01-05T00:50:14.622+0700	ERROR	repository/product.go:38	error query findall repo 	{"error": "ERROR: relation \"assignments\" does not exist (SQLSTATE 42P01)"}
+2026-01-05T00:50:14.622+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product?page=1&limit=5", "Duration": "2.6486ms"}
+2026-01-05T00:50:31.123+0700	ERROR	repository/product.go:38	error query findall repo 	{"error": "ERROR: relation \"assignments\" does not exist (SQLSTATE 42P01)"}
+2026-01-05T00:50:31.125+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product?page=1&limit=2", "Duration": "4.0192ms"}
+2026-01-05T00:50:52.068+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product/1", "Duration": "11.4207ms"}
+2026-01-05T00:53:06.096+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product?page=1&limit=5", "Duration": "17.6918ms"}

@@ -7,6 +7,7 @@ type Service struct {
 	WarehouseService WarehouseService
 	ShelveService ShelveService
 	UserService UserService
+	ProductService ProductService
 }
 
 func NewService(repo repository.Repository) Service {
@@ -15,5 +16,6 @@ func NewService(repo repository.Repository) Service {
 		WarehouseService: NewWarehouseService(repo),
 		ShelveService: NewShelveService(repo),
 		UserService: NewUserService(repo),
+		ProductService: NewProductService(repo),
 	}
 }
