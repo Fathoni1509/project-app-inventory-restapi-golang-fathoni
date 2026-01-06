@@ -59,6 +59,11 @@ func (pr *productService) AddProduct(product *model.Product) error {
 		return errors.New("update_id (user_id) is invalid or does not exist")
 	}
 
+	_, err = pr.Repo.ShelveRepo.GetListShelveById(product.ShelveId)
+	if err != nil {
+		return errors.New("shelve_id is invalid or does not exist")
+	}
+
 	err = pr.Repo.ProductRepo.AddProduct(product)
 	if err != nil {
 		return err
@@ -91,6 +96,11 @@ func (pr *productService) UpdateProduct(product_id int, product *model.Product) 
 		return errors.New("update_id (user_id) is invalid or does not exist")
 	}
 
+	_, err = pr.Repo.ShelveRepo.GetListShelveById(product.ShelveId)
+	if err != nil {
+		return errors.New("shelve_id is invalid or does not exist")
+	}
+	
 	err = pr.Repo.ProductRepo.UpdateProduct(product_id, product)
 	if err != nil {
 		return err

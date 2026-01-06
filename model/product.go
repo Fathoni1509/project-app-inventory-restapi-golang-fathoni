@@ -9,5 +9,8 @@ type Product struct {
 	SellPrice     float32 `json:"sell_price"`
 	UpdatedBy     int     `json:"updated_by"`
 	Username      string  `json:"username"`
+	ShelveId      int     `json:"shelve_id"`
+	Shelve        string  `json:"shelve"`
+	Quantity      int     `json:"quantity"`
 	Model
 }

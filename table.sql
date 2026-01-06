@@ -67,6 +67,22 @@ CREATE TABLE sales (
 	sale_date TIMESTAMP NOT NULL
 )
 
+CREATE TABLE sales (
+	sale_id SERIAL PRIMARY KEY NOT NULL,
+	user_id INT NOT NULL,
+	CONSTRAINT fk_user
+		FOREIGN KEY (user_id)
+		REFERENCES users(user_id),
+	product_id INT NOT NULL,
+	CONSTRAINT fk_produt
+		FOREIGN KEY (product_id)
+		REFERENCES products(product_id),
+	items INT NOT NULL,
+	price NUMERIC,
+	total NUMERIC,
+	sale_date TIMESTAMP NOT NULL
+)
+
 CREATE TABLE sales_detail (
 	sale_detail_id SERIAL PRIMARY KEY NOT NULL,
 	sale_id INT NOT NULL,

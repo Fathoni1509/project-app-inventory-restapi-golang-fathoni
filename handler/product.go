@@ -44,8 +44,10 @@ func (productHandler *ProductHandler) AddProduct(w http.ResponseWriter, r *http.
 	product := model.Product{
 		Name: req.Name,
 		CategoryId: req.CategoryId,
+		ShelveId: req.ShelveId,
 		PurchasePrice: req.PurchasePrice,
 		SellPrice: req.SellPrice,
+		Quantity: req.Quantity,
 		UpdatedBy: req.UpdatedBy,
 	}
 
@@ -130,12 +132,20 @@ func (productHandler *ProductHandler) UpdateProduct(w http.ResponseWriter, r *ht
 		existing.CategoryId = *req.CategoryId
 	}
 
+	if req.ShelveId != nil {
+		existing.ShelveId = *req.ShelveId
+	}
+
 	if req.PurchasePrice != nil {
 		existing.PurchasePrice = *req.PurchasePrice
 	}
 
 	if req.SellPrice != nil {
 		existing.SellPrice = *req.SellPrice
+	}
+
+	if req.Quantity != nil {
+		existing.Quantity = *req.Quantity
 	}
 
 	if req.UpdatedBy != nil {
@@ -153,8 +163,10 @@ func (productHandler *ProductHandler) UpdateProduct(w http.ResponseWriter, r *ht
 	product := model.Product{
 		Name: existing.Name,
 		CategoryId: existing.CategoryId,
+		ShelveId: existing.ShelveId,
 		PurchasePrice: existing.PurchasePrice,
 		SellPrice: existing.SellPrice,
+		Quantity: existing.Quantity,
 		UpdatedBy: existing.UpdatedBy,
 	}
 

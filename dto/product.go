@@ -7,6 +7,8 @@ type ProductCreateRequest struct {
 	PurchasePrice float32 `json:"purchase_price" validate:"required,gt=0"`
 	SellPrice     float32 `json:"sell_price" validate:"required,gt=0"`
 	UpdatedBy     int     `json:"updated_by" validate:"required"`
+	ShelveId      int     `json:"shelve_id" validate:"required,gt=0"`
+	Quantity      int     `json:"quantity" validate:"required,gte=0"`
 }
 
 type ProductUpdateRequest struct {
@@ -16,6 +18,8 @@ type ProductUpdateRequest struct {
 	PurchasePrice *float32 `json:"purchase_price"`
 	SellPrice     *float32 `json:"sell_price"`
 	UpdatedBy     *int     `json:"updated_by" validate:"required"`
+	ShelveId      *int     `json:"shelve_id"`
+	Quantity      *int     `json:"quantity"`
 }
 
 type ProductResponse struct {
@@ -25,4 +29,6 @@ type ProductResponse struct {
 	PurchasePrice float32 `json:"purchase_price"`
 	SellPrice     float32 `json:"sell_price"`
 	UpdatedBy     int     `json:"updated_by"`
+	ShelveId      int     `json:"shelve_id"`
+	Quantity      int     `json:"quantity"`
 }

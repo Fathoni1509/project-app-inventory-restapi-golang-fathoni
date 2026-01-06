@@ -7,21 +7,25 @@ import (
 )
 
 type Repository struct {
-	CategoryRepo CategoryRepository
-	WarehouseRepo WarehouseRepository
-	ShelveRepo ShelveRepository
-	UserRepo UserRepository
-	ProductRepo ProductRepository
-	InventoryRepo InventoryRepository
+	CategoryRepo    CategoryRepository
+	WarehouseRepo   WarehouseRepository
+	ShelveRepo      ShelveRepository
+	UserRepo        UserRepository
+	ProductRepo     ProductRepository
+	InventoryRepo   InventoryRepository
+	SaleRepo        SaleRepository
+	DB              database.PgxIface
 }
 
 func NewRepository(db database.PgxIface, log *zap.Logger) Repository {
 	return Repository{
-		CategoryRepo: NewCategoryRepository(db),
-		WarehouseRepo: NewWarehouseRepository(db),
-		ShelveRepo: NewShelveRepository(db),
-		UserRepo: NewUserRepository(db),
-		ProductRepo: NewProductRepository(db, log),
-		InventoryRepo: NewInventoryRepository(db),
+		CategoryRepo:    NewCategoryRepository(db),
+		WarehouseRepo:   NewWarehouseRepository(db),
+		ShelveRepo:      NewShelveRepository(db),
+		UserRepo:        NewUserRepository(db),
+		ProductRepo:     NewProductRepository(db, log),
+		InventoryRepo:   NewInventoryRepository(db),
+		SaleRepo:        NewSaleRepository(db, log),
+		DB:              db,
 	}
 }

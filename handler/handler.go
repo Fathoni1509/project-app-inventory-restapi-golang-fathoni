@@ -8,23 +8,25 @@ import (
 type Handler struct {
 	// HandlerAuth       AuthHandler
 	// HandlerMenu       MenuHandler
-	CategoryHandler CategoryHandler
+	CategoryHandler  CategoryHandler
 	WarehouseHandler WarehouseHandler
-	ShelveHandler ShelveHandler
-	UserHandler UserHandler
-	ProductHandler ProductHandler
+	ShelveHandler    ShelveHandler
+	UserHandler      UserHandler
+	ProductHandler   ProductHandler
 	InventoryHandler InventoryHandler
+	SaleHandler      SaleHandler
 }
 
 func NewHandler(service service.Service, config utils.Configuration) Handler {
 	return Handler{
 		// HandlerAuth: NewAuthHandler(service),
 		// HandlerMenu:       NewMenuHandler(),
-		CategoryHandler: NewCategoryHandler(service.CategoryService, config),
+		CategoryHandler:  NewCategoryHandler(service.CategoryService, config),
 		WarehouseHandler: NewWarehouseHandler(service.WarehouseService, config),
-		ShelveHandler: NewShelveHandler(service.ShelveService, config),
-		UserHandler: NewUserHandler(service.UserService, config),
-		ProductHandler: NewProductHandler(service.ProductService, config),
+		ShelveHandler:    NewShelveHandler(service.ShelveService, config),
+		UserHandler:      NewUserHandler(service.UserService, config),
+		ProductHandler:   NewProductHandler(service.ProductService, config),
 		InventoryHandler: NewInventoryHandler(service.InventoryService, config),
+		SaleHandler:      NewSaleHandler(service.SaleService, config),
 	}
 }

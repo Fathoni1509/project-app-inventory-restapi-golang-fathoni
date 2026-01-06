@@ -66,6 +66,7 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(mw.Logging)
+	// CRUD Category
 	r.Route("/category", func(r chi.Router) {
 		r.Get("/", handler.CategoryHandler.GetListCategories)
 		r.Post("/", handler.CategoryHandler.AddCategory)
@@ -75,6 +76,7 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Delete("/", handler.CategoryHandler.DeleteCategory)
 		})
 	})
+	// CRUD Warehouse
 	r.Route("/warehouse", func(r chi.Router) {
 		r.Get("/", handler.WarehouseHandler.GetListWarehouses)
 		r.Post("/", handler.WarehouseHandler.AddWarehouse)
@@ -84,6 +86,7 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Delete("/", handler.WarehouseHandler.DeleteWarehouse)
 		})
 	})
+	// CRUD Shelve
 	r.Route("/shelve", func(r chi.Router) {
 		r.Get("/", handler.ShelveHandler.GetListShelves)
 		r.Post("/", handler.ShelveHandler.AddShelve)
@@ -93,6 +96,7 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Delete("/", handler.ShelveHandler.DeleteShelve)
 		})
 	})
+	// CRUD User
 	r.Route("/user", func(r chi.Router) {
 		r.Get("/", handler.UserHandler.GetListUsers)
 		r.Post("/", handler.UserHandler.AddUser)
@@ -102,6 +106,7 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Delete("/", handler.UserHandler.DeleteUser)
 		})
 	})
+	// CRUD Product
 	r.Route("/product", func(r chi.Router) {
 		r.Get("/", handler.ProductHandler.GetListProducts)
 		r.Post("/", handler.ProductHandler.AddProduct)
@@ -111,6 +116,7 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Delete("/", handler.ProductHandler.DeleteProduct)
 		})
 	})
+	// CRUD Inventory
 	r.Route("/inventory", func(r chi.Router) {
 		r.Get("/", handler.InventoryHandler.GetListInventorys)
 		r.Post("/", handler.InventoryHandler.AddInventory)
@@ -118,6 +124,16 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Get("/", handler.InventoryHandler.GetListInventoryByID)
 			r.Put("/", handler.InventoryHandler.UpdateInventory)
 			r.Delete("/", handler.InventoryHandler.DeleteInventory)
+		})
+	})
+	// CRUD Sale
+	r.Route("/sale", func(r chi.Router) {
+		r.Get("/", handler.SaleHandler.GetListSales)
+		r.Post("/", handler.SaleHandler.AddSale)
+		r.Route("/{sale_id}", func(r chi.Router) {
+			r.Get("/", handler.SaleHandler.GetListSaleByID)
+			r.Put("/", handler.SaleHandler.UpdateSale)
+			r.Delete("/", handler.SaleHandler.DeleteSale)
 		})
 	})
 
