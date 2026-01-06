@@ -39,3 +39,6 @@
 2026-01-06T23:28:17.902+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/sale/1", "Duration": "10.4394ms"}
 2026-01-06T23:28:34.092+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/sale/1", "Duration": "8.2448ms"}
 2026-01-06T23:30:57.236+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "DELETE", "URL": "/api/v2/sale/1", "Duration": "5.0828ms"}
+2026-01-06T23:39:00.486+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/sale", "Duration": "15.6223ms"}
+2026-01-06T23:39:13.711+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/sale", "Duration": "25.8466ms"}
+2026-01-06T23:39:22.190+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/sale", "Duration": "7.3878ms"}

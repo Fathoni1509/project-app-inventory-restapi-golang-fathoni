@@ -68,7 +68,8 @@ func (saleHandler *SaleHandler) GetListSales(w http.ResponseWriter, r *http.Requ
 	}
 
 	// limit pagination
-	limit := saleHandler.Config.Limit
+	// limit := saleHandler.Config.Limit
+	limit, err := strconv.Atoi(r.URL.Query().Get("limit"))
 
 	// Get data sale form service all sale
 	sales, pagination, err := saleHandler.SaleService.GetListSales(page, limit)

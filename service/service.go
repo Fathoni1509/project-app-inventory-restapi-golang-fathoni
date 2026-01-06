@@ -3,23 +3,25 @@ package service
 import "project-app-inventory-restapi-golang-fathoni/repository"
 
 type Service struct {
-	CategoryService CategoryService
+	CategoryService  CategoryService
 	WarehouseService WarehouseService
-	ShelveService ShelveService
-	UserService UserService
-	ProductService ProductService
+	ShelveService    ShelveService
+	UserService      UserService
+	ProductService   ProductService
 	InventoryService InventoryService
-	SaleService SaleService
+	SaleService      SaleService
+	ReportService    ReportService
 }
 
 func NewService(repo repository.Repository) Service {
 	return Service{
-		CategoryService: NewCategoryService(repo),
+		CategoryService:  NewCategoryService(repo),
 		WarehouseService: NewWarehouseService(repo),
-		ShelveService: NewShelveService(repo),
-		UserService: NewUserService(repo),
-		ProductService: NewProductService(repo),
+		ShelveService:    NewShelveService(repo),
+		UserService:      NewUserService(repo),
+		ProductService:   NewProductService(repo),
 		InventoryService: NewInventoryService(repo),
-		SaleService: NewSaleService(repo),
+		SaleService:      NewSaleService(repo),
+		ReportService:    NewReportService(repo),
 	}
 }

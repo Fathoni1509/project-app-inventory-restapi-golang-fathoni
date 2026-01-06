@@ -1,0 +1,16 @@
+2026-01-07T00:10:51.201+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/product/1", "Duration": "69.766ms"}
+2026-01-07T00:11:03.009+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "PUT", "URL": "/api/v2/product/3", "Duration": "7.854ms"}
+2026-01-07T00:22:56.728+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/report", "Duration": "54.5074ms"}
+2026-01-07T00:24:21.409+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/sale", "Duration": "112.1697ms"}
+2026-01-07T00:24:40.675+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/sale", "Duration": "4.3328ms"}
+2026-01-07T00:24:48.260+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/sale", "Duration": "9.273ms"}
+2026-01-07T00:25:00.765+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=1&limit=5", "Duration": "7.4203ms"}
+2026-01-07T00:26:01.521+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=2&limit=5", "Duration": "169.0603ms"}
+2026-01-07T00:26:15.327+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=1&limit=5", "Duration": "2.7892ms"}
+2026-01-07T00:26:38.535+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=1&limit=6", "Duration": "2.4702ms"}
+2026-01-07T00:36:03.300+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=1&limit=5", "Duration": "19.3985ms"}
+2026-01-07T00:36:20.887+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=1&limit=2", "Duration": "2.7227ms"}
+2026-01-07T00:36:34.485+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=1&limit=3", "Duration": "2.2559ms"}
+2026-01-07T00:36:49.605+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=1&limit=1", "Duration": "11.7093ms"}
+2026-01-07T00:36:56.881+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/sale?page=1&limit=4", "Duration": "2.0768ms"}
+2026-01-07T00:37:11.532+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/report", "Duration": "4.0619ms"}

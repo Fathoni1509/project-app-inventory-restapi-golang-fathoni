@@ -136,6 +136,8 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 			r.Delete("/", handler.SaleHandler.DeleteSale)
 		})
 	})
+	// read report
+	r.Get("/report", handler.ReportHandler.GetListReports)
 
 	return r
 }
