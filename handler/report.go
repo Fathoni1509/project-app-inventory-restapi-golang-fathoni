@@ -36,3 +36,22 @@ func (reportHandler *ReportHandler) GetListReports(w http.ResponseWriter, r *htt
 	utils.ResponseSuccess(w, http.StatusOK, "success get data report", reports)
 
 }
+
+// get list reports
+func (reportHandler *ReportHandler) GetListMinStocks(w http.ResponseWriter, r *http.Request) {
+	// page, err := strconv.Atoi(r.URL.Query().Get("page"))
+	// if err != nil {
+	// 	utils.ResponseBadRequest(w, http.StatusBadRequest, "Invalid page", nil)
+	// 	return
+	// }
+
+	// Get data report form service all report
+	reports, err := reportHandler.ReportService.GetListMinStocks()
+	if err != nil {
+		utils.ResponseBadRequest(w, http.StatusInternalServerError, "Failed to fetch minimum stock: "+err.Error(), nil)
+		return
+	}
+
+	utils.ResponseSuccess(w, http.StatusOK, "success get data minimum stock product", reports)
+
+}

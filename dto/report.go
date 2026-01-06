@@ -8,3 +8,8 @@ type ReportResponse struct {
 	Sales     float32 `json:"sales"`
 	Income    float32 `json:"income"`
 }
+
+type MinStockResponse struct {
+	Name  string `json:"name"`
+	Stock int    `json:"stock"`
+}

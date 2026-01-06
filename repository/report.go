@@ -8,6 +8,7 @@ import (
 
 type ReportRepository interface {
 	GetListReports() ([]dto.ReportResponse, error)
+	GetListMinStocks() ([]dto.MinStockResponse, error)
 }
 
 type reportRepository struct {
@@ -45,6 +46,36 @@ func (repo *reportRepository) GetListReports() ([]dto.ReportResponse, error) {
 	var list dto.ReportResponse
 	for rows.Next() {
 		err := rows.Scan(&list.Name, &list.Remain, &list.Sold, &list.SellPrice, &list.Sales, &list.Income)
+		if err != nil {
+			return nil, err
+		}
+		response = append(response, list)
+	}
+
+	return response, nil
+}
+
+// get list minstock
+func (repo *reportRepository) GetListMinStocks() ([]dto.MinStockResponse, error) {
+	query := `SELECT  
+		name AS name,
+		quantity AS stock
+	FROM products
+	WHERE deleted_at IS NULL AND quantity < 5
+	ORDER BY stock`
+
+	rows, err := repo.db.Query(context.Background(), query)
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+
+	var response []dto.MinStockResponse
+	var list dto.MinStockResponse
+	for rows.Next() {
+		err := rows.Scan(&list.Name, &list.Stock)
 		if err != nil {
 			return nil, err
 		}

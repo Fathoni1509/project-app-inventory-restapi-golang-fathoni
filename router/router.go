@@ -138,6 +138,8 @@ func Apiv2(handler handler.Handler, mw mCostume.MiddlewareCostume) *chi.Mux {
 	})
 	// read report
 	r.Get("/report", handler.ReportHandler.GetListReports)
+	// check stock
+	r.Get("/minstock", handler.ReportHandler.GetListMinStocks)
 
 	return r
 }

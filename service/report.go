@@ -7,6 +7,7 @@ import (
 
 type ReportService interface {
 	GetListReports() ([]dto.ReportResponse, error)
+	GetListMinStocks() ([]dto.MinStockResponse, error)
 }
 
 type reportService struct {
@@ -20,4 +21,9 @@ func NewReportService(repo repository.Repository) ReportService {
 // service get list reports
 func (rep *reportService) GetListReports() ([]dto.ReportResponse, error) {
 	return rep.Repo.ReportRepo.GetListReports()
+}
+
+// service get list min stock
+func (rep *reportService) GetListMinStocks() ([]dto.MinStockResponse, error) {
+	return rep.Repo.ReportRepo.GetListMinStocks()
 }

@@ -16,3 +16,7 @@
 2026-01-07T00:37:11.532+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/report", "Duration": "4.0619ms"}
 2026-01-07T00:40:46.148+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product?page=1&limit=1", "Duration": "64.7712ms"}
 2026-01-07T00:40:55.302+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/product?page=1&limit=2", "Duration": "3.7056ms"}
+2026-01-07T00:57:28.772+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/minstock", "Duration": "53.0606ms"}
+2026-01-07T00:58:02.464+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "POST", "URL": "/api/v2/product", "Duration": "25.3594ms"}
+2026-01-07T00:58:44.056+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/minstock", "Duration": "5.2609ms"}
+2026-01-07T01:01:02.680+0700	INFO	middleware/logging.go:22	Activity route	{"Method": "GET", "URL": "/api/v2/minstock", "Duration": "6.1906ms"}
