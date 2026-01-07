@@ -74,18 +74,6 @@ func (pr *productService) AddProduct(product *model.Product) error {
 
 // service update product by ID
 func (pr *productService) UpdateProduct(product_id int, product *model.Product) error {
-	// categories, err := cat.GetListCategories()
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, c := range categories {
-	// 	if category_id == c.CategoryId {
-	// 		return cat.Repo.CategoryRepo.UpdateCategory(category_id, category)
-	// 	}
-	// }
-
-	// return errors.New("id category not found")
-
 	_, err := pr.Repo.CategoryRepo.GetListCategoryById(product.CategoryId)
 	if err != nil {
 		return errors.New("category_id is invalid or does not exist")
@@ -111,16 +99,5 @@ func (pr *productService) UpdateProduct(product_id int, product *model.Product) 
 
 // service delete product by ID
 func (pr *productService) DeleteProduct(product_id int) error {
-	// categories, err := cat.Repo.CategoryRepo.GetListCategories()
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, c := range categories {
-	// 	if category_id == c.CategoryId {
-	// 		return cat.Repo.CategoryRepo.DeleteCategory(category_id, category)
-	// 	}
-	// }
-
-	// return errors.New("id category not found")
 	return pr.Repo.ProductRepo.DeleteProduct(product_id)
 }

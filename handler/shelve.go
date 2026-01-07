@@ -58,12 +58,6 @@ func (shelveHandler *ShelveHandler) AddShelve(w http.ResponseWriter, r *http.Req
 
 // get list shelves
 func (shelveHandler *ShelveHandler) GetListShelves(w http.ResponseWriter, r *http.Request) {
-	// page, err := strconv.Atoi(r.URL.Query().Get("page"))
-	// if err != nil {
-	// 	utils.ResponseBadRequest(w, http.StatusBadRequest, "Invalid page", nil)
-	// 	return
-	// }
-
 	// Get data shelve form service all shelve
 	shelves, err := shelveHandler.ShelveService.GetListShelves()
 	if err != nil {

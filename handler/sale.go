@@ -45,8 +45,6 @@ func (saleHandler *SaleHandler) AddSale(w http.ResponseWriter, r *http.Request) 
 		UserId: req.UserId,
 		ProductId: req.ProductId,
 		Items: req.Items,
-		// Price: req.Price,
-		// Total: req.Total,
 	}
 
 	// create sale service
@@ -68,7 +66,6 @@ func (saleHandler *SaleHandler) GetListSales(w http.ResponseWriter, r *http.Requ
 	}
 
 	// limit pagination
-	// limit := saleHandler.Config.Limit
 	limit, err := strconv.Atoi(r.URL.Query().Get("limit"))
 
 	// Get data sale form service all sale
@@ -127,21 +124,9 @@ func (saleHandler *SaleHandler) UpdateSale(w http.ResponseWriter, r *http.Reques
 		existing.UserId = *req.UserId
 	}
 
-	// if req.ProductId != nil {
-	// 	existing.ProductId = *req.ProductId
-	// }
-
 	if req.Items != nil {
 		existing.Items = *req.Items
 	}
-
-	// if req.Price != nil {
-	// 	existing.Price = *req.Price
-	// }
-
-	// if req.Total != nil {
-	// 	existing.Total = *req.Total
-	// }
 
 	// validation
 	messages, err := utils.ValidateErrors(req)
@@ -153,10 +138,7 @@ func (saleHandler *SaleHandler) UpdateSale(w http.ResponseWriter, r *http.Reques
 	// parsing to model sale
 	sale := model.Sale{
 		UserId: existing.UserId,
-		// ProductId: existing.ProductId,
 		Items: existing.Items,
-		// Price: existing.Price,
-		// Total: existing.Total,
 	}
 
 	err = saleHandler.SaleService.UpdateSale(saleID, &sale)

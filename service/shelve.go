@@ -50,18 +50,6 @@ func (sh *shelveService) AddShelve(shelve *model.Shelve) error {
 
 // service update shelve by ID
 func (sh *shelveService) UpdateShelve(shelve_id int, shelve *model.Shelve) error {
-	// categories, err := cat.GetListCategories()
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, c := range categories {
-	// 	if category_id == c.CategoryId {
-	// 		return cat.Repo.CategoryRepo.UpdateCategory(category_id, category)
-	// 	}
-	// }
-
-	// return errors.New("id category not found")
-
 	_, err := sh.Repo.WarehouseRepo.GetListWarehouseById(shelve.WarehouseId)
 	if err != nil {
 		return errors.New("warehous_id is invalid or does not exist")
@@ -77,16 +65,5 @@ func (sh *shelveService) UpdateShelve(shelve_id int, shelve *model.Shelve) error
 
 // service delete shelve by ID
 func (sh *shelveService) DeleteShelve(shelve_id int) error {
-	// categories, err := cat.Repo.CategoryRepo.GetListCategories()
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, c := range categories {
-	// 	if category_id == c.CategoryId {
-	// 		return cat.Repo.CategoryRepo.DeleteCategory(category_id, category)
-	// 	}
-	// }
-
-	// return errors.New("id category not found")
 	return sh.Repo.ShelveRepo.DeleteShelve(shelve_id)
 }

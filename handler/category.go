@@ -57,12 +57,6 @@ func (categoryHandler *CategoryHandler) AddCategory(w http.ResponseWriter, r *ht
 
 // get list categories
 func (categoryHandler *CategoryHandler) GetListCategories(w http.ResponseWriter, r *http.Request) {
-	// page, err := strconv.Atoi(r.URL.Query().Get("page"))
-	// if err != nil {
-	// 	utils.ResponseBadRequest(w, http.StatusBadRequest, "Invalid page", nil)
-	// 	return
-	// }
-
 	// Get data categori form service all category
 	categories, err := categoryHandler.CategoryService.GetListCategories()
 	if err != nil {

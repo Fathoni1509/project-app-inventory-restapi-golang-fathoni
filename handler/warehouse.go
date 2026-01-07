@@ -58,12 +58,6 @@ func (warehouseHandler *WarehouseHandler) AddWarehouse(w http.ResponseWriter, r 
 
 // get list warehouses
 func (warehouseHandler *WarehouseHandler) GetListWarehouses(w http.ResponseWriter, r *http.Request) {
-	// page, err := strconv.Atoi(r.URL.Query().Get("page"))
-	// if err != nil {
-	// 	utils.ResponseBadRequest(w, http.StatusBadRequest, "Invalid page", nil)
-	// 	return
-	// }
-
 	// Get data warehouse form service all warehouse
 	warehouses, err := warehouseHandler.WarehouseService.GetListWarehouses()
 	if err != nil {

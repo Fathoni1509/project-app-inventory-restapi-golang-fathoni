@@ -39,33 +39,10 @@ func (cat *categoryService) AddCategory(category *model.Category) error {
 
 // service update category by ID
 func (cat *categoryService) UpdateCategory(category_id int, category *model.Category) error {
-	// categories, err := cat.GetListCategories()
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, c := range categories {
-	// 	if category_id == c.CategoryId {
-	// 		return cat.Repo.CategoryRepo.UpdateCategory(category_id, category)
-	// 	}
-	// }
-
-	// return errors.New("id category not found")
-
 	return cat.Repo.CategoryRepo.UpdateCategory(category_id, category)
 }
 
 // service delete category by ID
 func (cat *categoryService) DeleteCategory(category_id int) error {
-	// categories, err := cat.Repo.CategoryRepo.GetListCategories()
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, c := range categories {
-	// 	if category_id == c.CategoryId {
-	// 		return cat.Repo.CategoryRepo.DeleteCategory(category_id, category)
-	// 	}
-	// }
-
-	// return errors.New("id category not found")
 	return cat.Repo.CategoryRepo.DeleteCategory(category_id)
 }

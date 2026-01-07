@@ -57,15 +57,9 @@ func (userHandler *UserHandler) AddUser(w http.ResponseWriter, r *http.Request) 
 	utils.ResponseSuccess(w, http.StatusOK, "success created user", nil)
 }
 
-// get list categories
+// get list users
 func (userHandler *UserHandler) GetListUsers(w http.ResponseWriter, r *http.Request) {
-	// page, err := strconv.Atoi(r.URL.Query().Get("page"))
-	// if err != nil {
-	// 	utils.ResponseBadRequest(w, http.StatusBadRequest, "Invalid page", nil)
-	// 	return
-	// }
-
-	// Get data categori form service all user
+	// Get data user form service all user
 	users, err := userHandler.UserService.GetListUsers()
 	if err != nil {
 		utils.ResponseBadRequest(w, http.StatusInternalServerError, "Failed to fetch users: "+err.Error(), nil)

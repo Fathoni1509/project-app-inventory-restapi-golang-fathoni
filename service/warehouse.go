@@ -39,33 +39,10 @@ func (war *warehouseService) AddWarehouse(warehouse *model.Warehouse) error {
 
 // service update category by ID
 func (war *warehouseService) UpdateWarehouse(warehouse_id int, warehouse *model.Warehouse) error {
-	// categories, err := cat.GetListCategories()
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, c := range categories {
-	// 	if category_id == c.CategoryId {
-	// 		return cat.Repo.CategoryRepo.UpdateCategory(category_id, category)
-	// 	}
-	// }
-
-	// return errors.New("id category not found")
-
 	return war.Repo.WarehouseRepo.UpdateWarehouse(warehouse_id, warehouse)
 }
 
 // service delete category by ID
 func (war *warehouseService) DeleteWarehouse(warehouse_id int) error {
-	// categories, err := cat.Repo.CategoryRepo.GetListCategories()
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, c := range categories {
-	// 	if category_id == c.CategoryId {
-	// 		return cat.Repo.CategoryRepo.DeleteCategory(category_id, category)
-	// 	}
-	// }
-
-	// return errors.New("id category not found")
 	return war.Repo.WarehouseRepo.DeleteWarehouse(warehouse_id)
 }

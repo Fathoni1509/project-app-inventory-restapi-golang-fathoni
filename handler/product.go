@@ -70,7 +70,6 @@ func (productHandler *ProductHandler) GetListProducts(w http.ResponseWriter, r *
 	}
 
 	// limit pagination
-	// limit := productHandler.Config.Limit
 	limit, err := strconv.Atoi(r.URL.Query().Get("limit"))
 
 	// Get data product form service all product

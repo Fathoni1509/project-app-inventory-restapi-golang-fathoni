@@ -6,8 +6,6 @@ import (
 )
 
 type Handler struct {
-	// HandlerAuth       AuthHandler
-	// HandlerMenu       MenuHandler
 	CategoryHandler  CategoryHandler
 	WarehouseHandler WarehouseHandler
 	ShelveHandler    ShelveHandler
@@ -19,8 +17,6 @@ type Handler struct {
 
 func NewHandler(service service.Service, config utils.Configuration) Handler {
 	return Handler{
-		// HandlerAuth: NewAuthHandler(service),
-		// HandlerMenu:       NewMenuHandler(),
 		CategoryHandler:  NewCategoryHandler(service.CategoryService, config),
 		WarehouseHandler: NewWarehouseHandler(service.WarehouseService, config),
 		ShelveHandler:    NewShelveHandler(service.ShelveService, config),
